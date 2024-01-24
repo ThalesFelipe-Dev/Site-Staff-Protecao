@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title class="pwrContentName"></title>
+  <!-- <script src="src/scripts/pwr.js"></script> -->
+  <script src="https://app.powercrm.com.br/assets/external/js/pwr_power.js"></script>
+  
+  <link rel="icon" type="image/png" class="cmpnFvIcn" />
+  
+  <script>function loadPage(){PowerCRM.init(['st4ff protec4o 740']);}</script>
+
+  <style>
+    :root{
+      /* A cor principal e uma variação dela, serve para o gradient do Banner */
+      --corDefault: #177ef3;  
+      --corDefaultDark: #0064d6;
+      /* Cor Botão */
+      --corButtonBanner: #35363b;
+      /* Usado para a borda do número no Banner */
+      --corDefaultOpacity: #ffffff;
+      /* Cor dos Ícones */
+      --corDefaultIcons: #35363b;  
+      /* Cor do Rodapé */
+      --corFooter: #2c3e53;  
+      /* Usado para a borda no rodapé */
+      --corDefaultIconsOpacity: rgba(255, 255, 255, 0.15);
+    }
+  </style>
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./src/styles/bootstrap.css">
+
+</head>
+<body>
+  <div id="app">
+
+    <!-- Início do Header -->
+    <header class="header-page">
+      <div class="container">
+        <img style="display:none;" class="pwrImgLogo" id="logo" alt="Logo">
+        <a style="display:none;" href="javascript:void(0)" target="_blank" class="button-whatsapp pwrConsultantExists">
+          <i class="icon-whatsapp"></i>
+          <span>
+            <small>WhatsApp do consultor</small>
+            <p class="pwrConsultantPhone"></p>
+          </span>
+        </a>
+      </div>
+    </header>
+    <!-- Fim do Header -->
+
+    <!-- Banner -->
+    <section class="banner pwrBackColor">
+      <!-- Header Banner -->
+      <div class="container">
+        <header>
+          <!-- Text Banner -->
+          <div class="text-banner">
+            <h1>Proteja seu veículo sem sair de casa</h1>
+            <p>O risco de bater seu carro ou ser roubado
+              é muito alto, não fique desprotegido.
+              Faça agora uma cotação e contrate on-line.</p>
+          </div>
+
+          <div class="box-call-to-action-form pwr_form">
+            <span>
+              Proteja seu veículo. Faça sua cotação!
+            </span>
+            <div class="step" id="pwr_step_1">
+              <div class="group-form">
+                <label for="">Meu nome é:</label>
+                <input type="text" id="pwr_field_name">
+              </div>
+              <div class="group-form">
+                <label for="">Informe seu E-mail:</label>
+                <input type="text" id="pwr_field_email">
+              </div>
+              <div class="group-form">
+                <label for="">Informe seu WhatsApp:</label>
+                <input type="text" id="pwr_field_mobile">
+              </div>
+              <div class="group-form">
+                <button type="submit" class="button" id="pwr_step_1_next">Próximo passo</button>
+              </div>
+            </div>
+            <!-- STEP 2 -->
+            <div class="step" style="display:none;" id="pwr_step_2">
+              <div class="group-form">
+                <label for="">Tipo de veículo:</label>
+                <ul>
+                  <li>
+                    <input type="radio" id="pwr_field_type_car" class="option-input radio" name="pwr_field_type" value="1"/>
+                    <label for="pwr_field_type_car">Carro</label>
+                  </li>
+                  <li>
+                    <input type="radio" id="pwr_field_type_motorcycle" class="option-input radio" name="pwr_field_type" value="2"/>
+                    <label for="pwr_field_type_motorcycle">Moto</label>
+                  </li>
+                  <li>
+                    <input id="pwr_field_type_truck" type="radio" class="option-input radio" name="pwr_field_type" value="3"/>
+                    <label for="pwr_field_type_truck">Caminhão</label>
+                  </li>
+                </ul>
+              </div>
+              <div class="row-flexbox">
+                <div class="group-form two-col">
+                  <label for="pwr_field_brand">Marca</label>
+                  <select id="pwr_field_brand"></select>
+                </div>
+                <div class="group-form two-col">
+                  <label for="pwr_field_year">Ano Modelo</label>
+                  <select id="pwr_field_year"></select>
+                </div>
+              </div>
+              <div class="group-form">
+                <label for="pwr_field_model">Modelo</label>
+                  <select id="pwr_field_model"></select>
+              </div>
+              <div class="row-flexbox">
+                <button type="submit" class="back" id="pwr_step_2_back"><i class="icon-left"></i></button>
+                <button class="button" id="pwr_step_2_next">Próximo passo</button>
+              </div>
+            </div>
+
+            <div class="step" style="display:none;" id="pwr_step_3">
+              <div class="group-form">
+                <label for="pwr_field_state">Moro no Estado:</label>
+                <select id="pwr_field_state"></select>
+              </div>
+              <div class="group-form">
+                <label for="">Na cidade:</label>
+                <select id="pwr_field_city"></select>
+              </div>
+              <div class="group-form">
+                <label for="">Você usa o seu veículo em Táxi ou Aplicativo?</label>
+                <div class="box-input">
+                  <input id="pwr_field_uber" type="checkbox" class="option-input checkbox" />
+                  <label for="pwr_field_uber">Sim <small>(deixe desmarcado se não usar)</small></label>
+                </div>
+              </div>
+              
+              <div class="row-flexbox">
+                <button type="submit" class="back" id="pwr_step_3_back"><i class="icon-left"></i></button>
+                <button class="button" id="pwr_step_3_go">Receber Cotação</button>
+              </div>
+            </div>
+
+
+          </div>
+        </header>
+      </div>
+      <!-- Footer Banner -->
+      <div class="container">
+        <footer>
+
+          <div class="box-banner">
+            <div class="number">1</div>
+            <div class="text-box">
+              <span>Faça uma cotação</span>
+              <p>
+                Descubra em tempo real 
+                o valor da mensalidade 
+                do seu veículo
+              </p>
+            </div>
+          </div>
+
+          <div class="box-banner">
+            <div class="number">2</div>
+            <div class="text-box">
+              <span>Contrate on-line</span>
+              <p>
+                Escolha um plano, 
+                inclua opcionais e faça 
+                o pagamento on-line
+              </p>
+            </div>
+          </div>
+
+          <div class="box-banner">
+            <div class="number">3</div>
+            <div class="text-box">
+              <span>Faça sua vistoria</span>
+              <p>
+                Baixe nosso aplicativo, 
+                faça sua própria vistoria 
+                e fique protegido mais rápido
+              </p>
+            </div>
+          </div>
+
+          
+        </footer>
+      </div>
+    </section>
+    <!-- Fim do Banner -->
+
+    <!-- Proteção Veicular Completa -->
+    <div class="section-boxs">
+      <div class="container">
+
+        <div class="title-section">
+          <span>Proteção Veicular Completa</span>
+          <p>Com ressarcimento de até 100% da tabela FIPE</p>
+        </div>
+
+        <ul class="lists-box">
+          <li>
+            <i class="icon-icone-furto-roubo"></i>
+            <div class="text-list-box">
+              <span>Furto / Roubo</span>
+              <p>
+                Seja ressarcido em até 100% do valor de tabela FIPE caso seu veículo seja roubado ou furtado.
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <i class="icon-icone-colisoes"></i>
+            <div class="text-list-box">
+              <span>Colisão</span>
+              <p>
+                Em caso de acidente, nós providenciamos o conserto do seu veículo.
+              </p>
+            </div>
+          </li>
+          <li>
+            <i class="icon-icone-perda-total"></i>
+            <div class="text-list-box">
+              <span>Perda total</span>
+              <p>
+                Se o estrago configurar Perda Total, nós iremos indenizá-lo por este prejuízo.
+              </p>
+            </div>
+          </li>
+          <li>
+            <i class="icon-icone-incendio"></i>
+            <div class="text-list-box">
+              <span>Incêndio</span>
+              <p>
+                Com a gente o seu veículo fica protegido em casos de incêndio com indenização total ou parcial.
+              </p>
+            </div>
+          </li>
+          <li>
+            <i class="icon-icone-granizo"></i>
+            <div class="text-list-box">
+              <span>Fenômenos naturais</span>
+              <p>
+                Se seu veículo for danificado por alagamentos, quedas de árvores ou chuvas de granizo, nós ressarcimos seu prejuízo.
+              </p>
+            </div>
+          </li>
+          <li>
+            <i class="icon-icone-brasil"></i>
+            <div class="text-list-box">
+              <span>Cobertura em todo Brasil</span>
+              <p>
+                Não importa onde aconteça o evento, você poderá contar conosco em todo o Brasil.
+              </p>
+            </div>
+          </li>
+          <li>
+            <i class="icon-icone-carro-reserva"></i>
+            <div class="text-list-box">
+              <span>Carro reserva</span>
+              <p>
+                Disponha um carro reserva caso aconteça algum imprevisto e o seu precise ir para a oficina.
+              </p>
+            </div>
+          </li>
+          <li>
+            <i class="icon-icone-colisoes"></i>
+            <div class="text-list-box">
+              <span>Proteção para terceiros</span>
+              <p>
+                Caso você se envolva em um acidente com outro veículo, os consertos são por nossa conta.
+              </p>
+            </div>
+          </li>
+          <li>
+            <i class="icon-icone-vidros"></i>
+            <div class="text-list-box">
+              <span>Cobertura para vidros</span>
+              <p>
+                Caso aconteça algum dano com seus vidros, podemos substituí-lo por outro novinho.
+              </p>
+            </div>
+          </li>
+
+        </ul>
+        <div class="row-flexbox-center">
+          <button class="button-modal" data-toggle="modal" data-target="#cotation">Faça uma cotação</button>
+        </div>
+      </div>
+      
+    </div>
+    <!-- Fim da Sessão Proteção Veicular Completa -->
+
+    <!-- Assistência 24 Horas Completa -->
+    <div class="section-list">
+      <div class="container">
+        <div class="title-section">
+          <span>Assistência 24 Horas Completa</span>
+          <p>Cobertura em todo território nacional</p>
+        </div>
+
+        <ul class="lists">
+
+          <li class="first-li">
+            <div class="product">
+              <span>Produto</span>
+            </div>
+            <div class="description">
+              <p>Descrição</p>
+            </div>
+          </li>
+
+          <li>
+            <div class="product">
+              <i class="icon-check"></i>
+              <span>Reboque</span>
+            </div>
+            <div class="description">
+              <p>
+                Temos reboques disponíveis 24 horas em todo Brasil para te socorrer em casos de acidente ou pane.
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <div class="product">
+              <i class="icon-check"></i>
+              <span>Chaveiro</span>
+            </div>
+            <div class="description">
+              <p>Trancou a chave dentro do carro? Nós enviamos um chaveiro para resolver seu problema na hora.
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <div class="product">
+              <i class="icon-check"></i>
+              <span>Troca de Pneus</span>
+            </div>
+            <div class="description">
+              <p>
+                Furou o pneu? Nós enviamos um técnico para trocá-lo ou um reboque para te levar a um borracheiro.
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <div class="product">
+              <i class="icon-check"></i>
+              <span>Táxi</span>
+            </div>
+            <div class="description">
+              <p>
+                Seu veículo te deixou na mão e você precisa chegar ao seu destino? Nós chamamos um táxi para você.
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <div class="product">
+              <i class="icon-check"></i>
+              <span>Hospedagem</span>
+            </div>
+            <div class="description">
+              <p>
+                Seu veículo te deixou na mão e você precisa passar a noite em algum hotel? Nós conseguimos um para você.
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <div class="product">
+              <i class="icon-check"></i>
+              <span>Guarda do veículo</span>
+            </div>
+            <div class="description">
+              <p>
+                Não tem lugar para guardar seu veículo acidentado? Nós o guardamos até que você consiga resolver.
+              </p>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+    <!-- Fim da Sessão Assistência 24 Horas Completa -->
+
+    <!-- Sessão Call to Action -->
+    <div class="section-call-to-action">
+
+      <div class="container">
+        <h2>Faça uma cotação gratuita</h2>
+        <p>Descubra em tempo real quanto custa proteger seu veículo</p>
+        <button type="submit" data-toggle="modal" data-target="#cotation">Faça uma cotação</button>
+      </div>
+    </div>
+    <!-- Fim da sessão Call to Action -->
+
+    <!-- Footer -->
+    <footer class="footer-page">
+      <div class="container">
+        <header style="display:none;" class="pwrConsultantExists">
+          <div class="consultant">
+            <img class="pwrConsultantPicture" alt="">
+            <div class="dados-consultant">
+              <span>Consultor</span>
+              <span class="pwrConsultantName"></span>
+              <span class="pwrConsultantEmail"></span>
+            </div>
+          </div>
+
+          <a href="javascript:void(0)" target="_blank" class="button-whatsapp pwrConsultantExists">
+            <i class="icon-whatsapp"></i>
+            <span>
+              <small>WhatsApp do consultor</small>
+              <p class="pwrConsultantPhone"></p>
+            </span>
+          </a>
+        </header>
+        <footer>
+          <p class="pwrContentName"></p>
+          <a target="_blank" href="http://powercrm.com.br" title="Somos um sistema de vendas para associações de proteção veicular">
+          <img alt="Somos um sistema de vendas para associações de proteção veicular" src="./src/images/power-crm.svg">
+          </a>
+        </footer>
+      </div>
+    </footer>
+    <!-- Fim do Footer -->
+
+    <!-- Modal -->
+      <div class="modal fade" id="cotation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <!-- Form -->
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="box-call-to-action-form pwr_form">
+              <span>
+                Proteja seu veículo. Faça sua cotação!
+              </span>
+              <div class="step" id="pwr_step_1">
+                <div class="group-form">
+                  <label for="">Meu nome é:</label>
+                  <input type="text" id="pwr_field_name">
+                </div>
+                <div class="group-form">
+                  <label for="">Informe seu E-mail:</label>
+                  <input type="text" id="pwr_field_email">
+                </div>
+                <div class="group-form">
+                  <label for="">Informe seu WhatsApp:</label>
+                  <input type="text" id="pwr_field_mobile">
+                </div>
+                <div class="group-form">
+                  <button type="submit" class="button" id="pwr_step_1_next">Próximo passo</button>
+                </div>
+              </div>
+              <!-- STEP 2 -->
+              <div class="step" style="display:none;" id="pwr_step_2">
+                <div class="group-form">
+                  <label for="">Tipo de veículo:</label>
+                  <ul>
+                    <li>
+                      <input type="radio" id="pwr_field_type_car" class="option-input radio" name="pwr_field_type" value="1"/>
+                      <label for="pwr_field_type_car">Carro</label>
+                    </li>
+                    <li>
+                      <input type="radio" id="pwr_field_type_motorcycle" class="option-input radio" name="pwr_field_type" value="2"/>
+                      <label for="pwr_field_type_motorcycle">Moto</label>
+                    </li>
+                    <li>
+                      <input id="pwr_field_type_truck" type="radio" class="option-input radio" name="pwr_field_type" value="3"/>
+                      <label for="pwr_field_type_truck">Caminhão</label>
+                    </li>
+                  </ul>
+                </div>
+                <div class="row-flexbox">
+                  <div class="group-form two-col">
+                    <label for="pwr_field_brand">Marca</label>
+                    <select id="pwr_field_brand"></select>
+                  </div>
+                  <div class="group-form two-col">
+                    <label for="pwr_field_year">Ano</label>
+                    <select id="pwr_field_year"></select>
+                  </div>
+                </div>
+                <div class="group-form">
+                  <label for="pwr_field_model">Modelo</label>
+                    <select id="pwr_field_model"></select>
+                </div>
+                <div class="row-flexbox">
+                  <button type="submit" class="back" id="pwr_step_2_back"><i class="icon-left"></i></button>
+                  <button class="button" id="pwr_step_2_next">Próximo passo</button>
+                </div>
+              </div>
+  
+              <div class="step" style="display:none;" id="pwr_step_3">
+                <div class="group-form">
+                  <label for="pwr_field_state">Moro no Estado:</label>
+                  <select id="pwr_field_state"></select>
+                </div>
+                <div class="group-form">
+                  <label for="">Na cidade:</label>
+                  <select id="pwr_field_city"></select>
+                </div>
+                <div class="group-form">
+                  <label for="">Você usa o seu veículo em Táxi ou Aplicativo?</label>
+                  <div class="box-input">
+                    <input id="pwr_field_uber" type="checkbox" class="option-input checkbox" />
+                    <label for="pwr_field_uber">Sim <small>(deixe desmarcado se não usar)</small></label>
+                  </div>
+                </div>
+                
+                <div class="row-flexbox">
+                  <button type="submit" class="back" id="pwr_step_3_back"><i class="icon-left"></i></button>
+                  <button class="button" id="pwr_step_3_go">Receber Cotação</button>
+                </div>
+              </div>
+  
+  
+            </div>
+
+
+            <!-- /Fim form -->
+          </div>
+        </div>
+      </div>
+    <!-- /Modal -->
+
+  </div>
+</body>
+</html>
